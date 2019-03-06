@@ -2,7 +2,6 @@ package com.example.eduardo_jiron.tretris;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.ImageView;
@@ -24,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
             {
                 ImageView imageView = new ImageView(this);
                 imageView.setLayoutParams(new ViewGroup.LayoutParams(10,10));
-                imageView.setImageResource(R.drawable.Gray_Square_medium);
+                imageView.setImageResource(R.drawable.gray_square);
                 gridTablero.addView(imageView, column, row);
             }
         }
