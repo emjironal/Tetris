@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
             {
                 ImageView imageView = new ImageView(this);
                 imageView.setLayoutParams(new ViewGroup.LayoutParams(10,10));
-                imageView.setImageResource(R.drawable.gris);
+                imageView.setImageResource(R.drawable.Gray_Square_medium);
                 gridTablero.addView(imageView, column, row);
             }
         }
