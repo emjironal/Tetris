@@ -9,7 +9,9 @@ import android.support.v7.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
+    private Tablero tablero;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -21,12 +23,13 @@ public class MainActivity extends AppCompatActivity {
         try
         {
             GridLayout gridTablero = findViewById(R.id.gridTablero);
+            tablero = new Tablero(gridTablero.getRowCount() - 2, gridTablero.getColumnCount() - 2);
             for(int row = 0; row < gridTablero.getRowCount(); row++)
             {
                 for(int column = 0; column < gridTablero.getColumnCount(); column++)
                 {
                     ImageView imageView = new ImageView(this);
-                    imageView.setLayoutParams(new ViewGroup.LayoutParams(90, 90));
+                    imageView.setLayoutParams(new ViewGroup.LayoutParams(90, 90)); //Tamaño de la imagen
                     if(row == (gridTablero.getRowCount() - 1) || row == 0 || column == (gridTablero.getColumnCount() - 1) || column == 0)
                     {
                         imageView.setImageResource(R.drawable.gray_square);
