@@ -49,10 +49,10 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Transforma una posición de la matriz en la posición del hijo del GridLayout
-     * @param column
-     * @param row
-     * @param cantColumnas
-     * @return
+     * @param column Número de columna
+     * @param row Número de fila
+     * @param cantColumnas Cantidad total de columnas
+     * @return Retorna el index del hijo en el GridLayout
      */
     private int getChildIndex(int column, int row, int cantColumnas)
     {

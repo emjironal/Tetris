@@ -11,7 +11,7 @@ public class Figura
 
     /**
      * Constructor de la clase Figura
-     * @param idFigura
+     * @param idFigura Tipo de figura que se desea crear en el tetris
      */
     public Figura(TipoFigura idFigura)
     {
@@ -39,6 +39,39 @@ public class Figura
             case I:
                 crearFiguraI();
                 break;
+        }
+    }
+
+    /**
+     * Mueve la figura hacia la izquierda
+     */
+    public void moverFiguraIzquierda()
+    {
+        for(Cuadro cuadro : cuadros)
+        {
+            cuadro.moverIzquierda();
+        }
+    }
+
+    /**
+     * Mueve la figura hacia la derecha
+     */
+    public void moverFiguraDerecha()
+    {
+        for(Cuadro cuadro : cuadros)
+        {
+            cuadro.moverDerecha();
+        }
+    }
+
+    /**
+     * Mueve la figura hacia abajo
+     */
+    public void moverFiguraAbajo()
+    {
+        for(Cuadro cuadro : cuadros)
+        {
+            cuadro.moverAbajo();
         }
     }
 

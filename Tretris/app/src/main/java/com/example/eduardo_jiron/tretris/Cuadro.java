@@ -14,8 +14,8 @@ public class Cuadro
 
     /**
      * Constructor de la clase Cuadro
-     * @param pX
-     * @param pY
+     * @param pX Posición en x del cuadro
+     * @param pY Posición en y del cuadro
      */
     public Cuadro(int pX, int pY)
     {
@@ -57,7 +57,7 @@ public class Cuadro
 
     /**
      * Getter de x
-     * @return
+     * @return Devuelve la posición x del cuadro
      */
     public int getX()
     {
@@ -66,7 +66,7 @@ public class Cuadro
 
     /**
      * Getter de y
-     * @return
+     * @return Devuelve la posición y del cuadro
      */
     public int getY()
     {
