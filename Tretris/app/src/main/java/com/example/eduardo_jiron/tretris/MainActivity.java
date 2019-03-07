@@ -27,7 +27,14 @@ public class MainActivity extends AppCompatActivity {
                 {
                     ImageView imageView = new ImageView(this);
                     imageView.setLayoutParams(new ViewGroup.LayoutParams(90, 90));
-                    imageView.setImageResource(R.drawable.gray_square);
+                    if(row == (gridTablero.getRowCount() - 1) || row == 0 || column == (gridTablero.getColumnCount() - 1) || column == 0)
+                    {
+                        imageView.setImageResource(R.drawable.gray_square);
+                    }
+                    else
+                    {
+                        imageView.setImageResource(R.drawable.black_square);
+                    }
                     int index = getChildIndex(column, row, gridTablero.getColumnCount());
                     gridTablero.addView(imageView, index);
                 }
