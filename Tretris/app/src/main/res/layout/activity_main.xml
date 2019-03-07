@@ -9,76 +9,83 @@
     <android.support.v7.widget.GridLayout
         android:id="@+id/gridTablero"
         android:layout_width="350dp"
-        android:layout_height="570dp"
+        android:layout_height="350dp"
         android:layout_margin="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:columnCount="10"
+        app:rowCount="10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:rowCount="10">
-
+        app:layout_constraintVertical_bias="0.16">
     </android.support.v7.widget.GridLayout>
 
     <Button
         android:id="@+id/btnAbajo"
         android:layout_width="100dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="btnAbajoClicked"
         android:text="Abajo"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRotar"
-        app:layout_constraintVertical_bias="0.6"
-        tools:layout_editor_absoluteX="142dp" />
+        app:layout_constraintVertical_bias="0.162" />
 
     <Button
         android:id="@+id/btnIzquierda"
         android:layout_width="100dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="8dp"
         android:text="Izquierda"
+        android:onClick="btnIzquierdaClicked"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnAbajo"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gridTablero"
-        app:layout_constraintVertical_bias="0.797" />
+        app:layout_constraintVertical_bias="0.638" />
 
     <Button
         android:id="@+id/btnDerecha"
         android:layout_width="100dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="Derecha"
+        android:onClick="btnDerechaClicked"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.307"
+        app:layout_constraintHorizontal_bias="0.225"
         app:layout_constraintStart_toEndOf="@+id/btnAbajo"
         app:layout_constraintTop_toBottomOf="@+id/gridTablero"
-        app:layout_constraintVertical_bias="0.797" />
+        app:layout_constraintVertical_bias="0.638" />
 
     <Button
         android:id="@+id/btnRotar"
         android:layout_width="100dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="8dp"
         android:text="Rotar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gridTablero" />
 </android.support.constraint.ConstraintLayout>
