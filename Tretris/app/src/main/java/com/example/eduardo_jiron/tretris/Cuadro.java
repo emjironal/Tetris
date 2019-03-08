@@ -3,24 +3,24 @@ package com.example.eduardo_jiron.tretris;
 public class Cuadro
 {
     /**
-     * Posición en x del cuadro
+     * Posición en column del cuadro
      */
-    private int x;
+    private int column;
 
     /**
-     * Posición en y del cuadro
+     * Posición en row del cuadro
      */
-    private int y;
+    private int row;
 
     /**
      * Constructor de la clase Cuadro
-     * @param pX Posición en x del cuadro
-     * @param pY Posición en y del cuadro
+     * @param pColumn Posición en column del cuadro
+     * @param pRow Posición en row del cuadro
      */
-    public Cuadro(int pX, int pY)
+    public Cuadro(int pColumn, int pRow)
     {
-        x = pX;
-        y = pY;
+        column = pColumn;
+        row = pRow;
     }
 
     /**
@@ -28,7 +28,7 @@ public class Cuadro
      */
     public void moverAbajo()
     {
-        y++;
+        row++;
     }
 
     /**
@@ -36,7 +36,7 @@ public class Cuadro
      */
     public void moverArriba()
     {
-        y--;
+        row--;
     }
 
     /**
@@ -44,7 +44,7 @@ public class Cuadro
      */
     public void moverDerecha()
     {
-        x++;
+        column++;
     }
 
     /**
@@ -52,24 +52,24 @@ public class Cuadro
      */
     public void moverIzquierda()
     {
-        x--;
+        column--;
     }
 
     /**
-     * Getter de x
-     * @return Devuelve la posición x del cuadro
+     * Getter de column
+     * @return Devuelve la posición column del cuadro
      */
-    public int getX()
+    public int getColumn()
     {
-        return x;
+        return column;
     }
 
     /**
-     * Getter de y
-     * @return Devuelve la posición y del cuadro
+     * Getter de row
+     * @return Devuelve la posición row del cuadro
      */
-    public int getY()
+    public int getRow()
     {
-        return y;
+        return row;
     }
 }

@@ -11,13 +11,34 @@ public class Tablero
         vaciarTablero();
     }
 
+    public void moverAbajo()
+    {
+        if(validarMoverAbajo())
+        {
+            for(Cuadro cuadro : figuraActiva.getCuadros())
+            {
+                tablero[cuadro.getColumn()][cuadro.getRow()] = TipoFigura.VACIO;
+                tablero[cuadro.getColumn()][cuadro.getRow() + 1] = TipoFigura.ACTUAL;
+            }
+            figuraActiva.moverFiguraAbajo();
+        }
+        else
+        {
+            for(Cuadro cuadro : figuraActiva.getCuadros())
+            {
+                tablero[cuadro.getColumn()][cuadro.getRow()] = figuraActiva.getTipoFigura();
+            }
+        }
+    }
+
     /**
      * Crea la figura activa
      * @param tipoFigura Forma de la figura (T, I, L, J, S, Z, O)
      */
     public void setFiguraActiva(TipoFigura tipoFigura)
     {
-        figuraActiva = new Figura(tipoFigura, tablero[0].length, 0);
+        int column = ((tablero[0].length - 2) / 2) - 1;
+        figuraActiva = new Figura(tipoFigura, column, 0);
     }
 
     /**
@@ -28,9 +49,9 @@ public class Tablero
     {
         for(Cuadro cuadro : figuraActiva.getCuadros())
         {
-            int x = cuadro.getX();
-            int y = cuadro.getY() - 1;
-            if(x >= tablero.length && y >= tablero[0].length && tablero[x][y] != TipoFigura.ACTUAL && tablero[x][y] != TipoFigura.VACIO)
+            int column = cuadro.getColumn() - 1;
+            int row = cuadro.getRow();
+            if(column >= tablero[0].length && row >= tablero.length && tablero[column][row] != TipoFigura.ACTUAL && tablero[column][row] != TipoFigura.VACIO)
             {
                 return false;
             }
@@ -46,9 +67,9 @@ public class Tablero
     {
         for(Cuadro cuadro : figuraActiva.getCuadros())
         {
-            int x = cuadro.getX();
-            int y = cuadro.getY() + 1;
-            if(x >= tablero.length && y >= tablero[0].length && tablero[x][y] != TipoFigura.ACTUAL && tablero[x][y] != TipoFigura.VACIO)
+            int column = cuadro.getColumn() + 1;
+            int row = cuadro.getRow();
+            if(column >= tablero[0].length && row >= tablero.length && tablero[column][row] != TipoFigura.ACTUAL && tablero[column][row] != TipoFigura.VACIO)
             {
                 return false;
             }
@@ -64,9 +85,9 @@ public class Tablero
     {
         for(Cuadro cuadro : figuraActiva.getCuadros())
         {
-            int x = cuadro.getX() + 1;
-            int y = cuadro.getY();
-            if(x >= tablero.length && y >= tablero[0].length && tablero[x][y] != TipoFigura.ACTUAL && tablero[x][y] != TipoFigura.VACIO)
+            int column = cuadro.getColumn();
+            int row = cuadro.getRow() + 1;
+            if(column >= tablero[0].length && row >= tablero.length && tablero[column][row] != TipoFigura.ACTUAL && tablero[column][row] != TipoFigura.VACIO)
             {
                 return false;
             }
