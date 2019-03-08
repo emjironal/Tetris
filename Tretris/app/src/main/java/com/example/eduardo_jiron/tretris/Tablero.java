@@ -2,20 +2,38 @@ package com.example.eduardo_jiron.tretris;
 
 public class Tablero
 {
+    /**
+     * Tablero virtual disponible para moverse
+     */
     private TipoFigura[][] tablero;
+    /**
+     * Figura que se encuentra cayendo
+     */
     private Figura figuraActiva;
 
+    /**
+     * Constructor de la clase Tablero
+     * @param rows cantidad de filas disponibles para moverse
+     * @param columns cantidad de columnas disponibles para moverse
+     */
     public Tablero(int rows, int columns)
     {
         tablero = new TipoFigura[rows][columns];
         vaciarTablero();
     }
 
+    /**
+     * Obtiene el tablero
+     * @return Devuelve el tablero
+     */
     public TipoFigura[][] getTablero()
     {
         return tablero;
     }
 
+    /**
+     * Mueve la figura hacia la izquierda en el tablero si no se puede no la mueve
+     */
     public void moverIzquierda()
     {
         if(validarMoverIzquierda())
@@ -32,6 +50,9 @@ public class Tablero
         }
     }
 
+    /**
+     * Mueve la figura actual hacia la derecha en el tablero si no se puede no la mueve
+     */
     public void moverDerecha()
     {
         if(validarMoverDerecha())
@@ -48,6 +69,9 @@ public class Tablero
         }
     }
 
+    /**
+     * Mueve la figura activa hacia abajo en el tablero si no se puede la fija en el tablero y crea una nueva
+     */
     public void moverAbajo()
     {
         if(validarMoverAbajo())
@@ -72,6 +96,9 @@ public class Tablero
         }
     }
 
+    /**
+     * Crea una figura de manera aleatoria
+     */
     public void crearFigura()
     {
         int figura = (int)(Math.random() * 7);
@@ -172,6 +199,9 @@ public class Tablero
         return true;
     }
 
+    /**
+     * Limpia el tablero, pone la matriz virtual en TipoFigura.VACIO
+     */
     private void vaciarTablero()
     {
         for(int row = 0; row < tablero.length; row++)

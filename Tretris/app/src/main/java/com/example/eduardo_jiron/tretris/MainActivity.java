@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
+    /**
+     * Tablero virtual
+     */
     private Tablero tablero;
 
     @Override
@@ -52,6 +55,9 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Refresca el tablero, recarga los colores en las posiciones correctas
+     */
     private void recargarTablero()
     {
         TipoFigura[][] temporalTablero = tablero.getTablero();
