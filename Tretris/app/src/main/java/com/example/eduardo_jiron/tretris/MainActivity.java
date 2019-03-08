@@ -63,9 +63,10 @@ public class MainActivity extends AppCompatActivity
         TipoFigura[][] temporalTablero = tablero.getTablero();
         GridLayout gridTablero = findViewById(R.id.gridTablero);
         ImageView imageView;
-        for(int column = 0; column < temporalTablero[0].length; column++)
+        for(int row = 0; row < temporalTablero.length; row++)
         {
-            for(int row = 0; row < temporalTablero.length; row++)
+            boolean isRowFilled = true;
+            for(int column = 0; column < temporalTablero[0].length; column++)
             {
                 imageView = (ImageView)gridTablero.getChildAt(getChildIndex(column + 1, row + 1, gridTablero.getColumnCount()));
                 if(temporalTablero[column][row] != TipoFigura.VACIO)
@@ -124,8 +125,10 @@ public class MainActivity extends AppCompatActivity
                 else
                 {
                     imageView.setImageResource(R.drawable.black_square);
+                    isRowFilled = false;
                 }
             }
+            
         }
     }
 
