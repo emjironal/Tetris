@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity
                     gridTablero.addView(imageView, index);
                 }
             }
+            tablero.crearFigura();
+            recargarTablero();
         }
         catch(Exception e)
         {
@@ -60,7 +62,14 @@ public class MainActivity extends AppCompatActivity
             for(int row = 0; row < temporalTablero.length; row++)
             {
                 imageView = (ImageView)gridTablero.getChildAt(getChildIndex(column + 1, row + 1, gridTablero.getColumnCount()));
-                imageView.setImageResource(R.drawable.blue_square);
+                if(temporalTablero[column][row] != TipoFigura.VACIO)
+                {
+                    imageView.setImageResource(R.drawable.blue_square);
+                }
+                else
+                {
+                    imageView.setImageResource(R.drawable.black_square);
+                }
             }
         }
     }
@@ -83,7 +92,8 @@ public class MainActivity extends AppCompatActivity
      */
     public void btnAbajoClicked(View view)
     {
-
+        tablero.moverAbajo();
+        recargarTablero();
     }
 
     /**
@@ -92,7 +102,8 @@ public class MainActivity extends AppCompatActivity
      */
     public void btnDerechaClicked(View view)
     {
-
+        tablero.moverDerecha();
+        recargarTablero();
     }
 
     /**
@@ -101,6 +112,7 @@ public class MainActivity extends AppCompatActivity
      */
     public void btnIzquierdaClicked(View view)
     {
-
+        tablero.moverIzquierda();
+        recargarTablero();
     }
 }
