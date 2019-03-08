@@ -50,6 +50,21 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    private void recargarTablero()
+    {
+        TipoFigura[][] temporalTablero = tablero.getTablero();
+        GridLayout gridTablero = findViewById(R.id.gridTablero);
+        ImageView imageView;
+        for(int column = 0; column < temporalTablero[0].length; column++)
+        {
+            for(int row = 0; row < temporalTablero.length; row++)
+            {
+                imageView = (ImageView)gridTablero.getChildAt(getChildIndex(column + 1, row + 1, gridTablero.getColumnCount()));
+                imageView.setImageResource(R.drawable.blue_square);
+            }
+        }
+    }
+
     /**
      * Transforma una posición de la matriz en la posición del hijo del GridLayout
      * @param column Número de columna

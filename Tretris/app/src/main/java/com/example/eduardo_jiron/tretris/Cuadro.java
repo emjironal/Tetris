@@ -17,7 +17,7 @@ public class Cuadro
      * @param pColumn Posición en column del cuadro
      * @param pRow Posición en row del cuadro
      */
-    public Cuadro(int pColumn, int pRow)
+    public Cuadro(int pRow, int pColumn)
     {
         column = pColumn;
         row = pRow;

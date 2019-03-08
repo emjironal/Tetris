@@ -13,10 +13,10 @@ public class Figura
     /**
      * Constructor de la clase Figura
      * @param idFigura Tipo de figura que se desea crear en el tetris
-     * @param x columna en la que se ubica el inicio de la figura
-     * @param y fila en la que se ubica el inicio de la figura
+     * @param y columna en la que se ubica el inicio de la figura
+     * @param x fila en la que se ubica el inicio de la figura
      */
-    public Figura(TipoFigura idFigura, int x, int y)
+    public Figura(TipoFigura idFigura, int y, int x)
     {
         cuadros = new ArrayList<>();
         switch (idFigura)

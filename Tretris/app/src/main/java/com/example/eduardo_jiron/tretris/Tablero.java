@@ -11,6 +11,37 @@ public class Tablero
         vaciarTablero();
     }
 
+    public TipoFigura[][] getTablero()
+    {
+        return tablero;
+    }
+
+    public void moverIzquierda()
+    {
+        if(validarMoverIzquierda())
+        {
+            for(Cuadro cuadro : figuraActiva.getCuadros())
+            {
+                tablero[cuadro.getColumn()][cuadro.getRow()] = TipoFigura.VACIO;
+                tablero[cuadro.getColumn() - 1][cuadro.getRow()] = TipoFigura.ACTUAL;
+            }
+            figuraActiva.moverFiguraIzquierda();
+        }
+    }
+
+    public void moverDerecha()
+    {
+        if(validarMoverDerecha())
+        {
+            for(Cuadro cuadro : figuraActiva.getCuadros())
+            {
+                tablero[cuadro.getColumn()][cuadro.getRow()] = TipoFigura.VACIO;
+                tablero[cuadro.getColumn() + 1][cuadro.getRow()] = TipoFigura.ACTUAL;
+            }
+            figuraActiva.moverFiguraDerecha();
+        }
+    }
+
     public void moverAbajo()
     {
         if(validarMoverAbajo())
@@ -28,6 +59,39 @@ public class Tablero
             {
                 tablero[cuadro.getColumn()][cuadro.getRow()] = figuraActiva.getTipoFigura();
             }
+            crearFigura();
+        }
+    }
+
+    public void crearFigura()
+    {
+        int figura = (int)(Math.random() * 7);
+        switch (figura)
+        {
+            case 0:
+                setFiguraActiva(TipoFigura.T);
+                break;
+            case 1:
+                setFiguraActiva(TipoFigura.J);
+                break;
+            case 2:
+                setFiguraActiva(TipoFigura.L);
+                break;
+            case 3:
+                setFiguraActiva(TipoFigura.S);
+                break;
+            case 4:
+                setFiguraActiva(TipoFigura.Z);
+                break;
+            case 5:
+                setFiguraActiva(TipoFigura.I);
+                break;
+            case 6:
+                setFiguraActiva(TipoFigura.O);
+                break;
+            default:
+                setFiguraActiva(TipoFigura.O);
+                break;
         }
     }
 
@@ -35,10 +99,14 @@ public class Tablero
      * Crea la figura activa
      * @param tipoFigura Forma de la figura (T, I, L, J, S, Z, O)
      */
-    public void setFiguraActiva(TipoFigura tipoFigura)
+    private void setFiguraActiva(TipoFigura tipoFigura)
     {
         int column = ((tablero[0].length - 2) / 2) - 1;
         figuraActiva = new Figura(tipoFigura, column, 0);
+        for(Cuadro cuadro : figuraActiva.getCuadros())
+        {
+            tablero[cuadro.getColumn()][cuadro.getRow()] = TipoFigura.ACTUAL;
+        }
     }
 
     /**
