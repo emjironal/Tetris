@@ -23,6 +23,15 @@ public class Tablero
     }
 
     /**
+     * Devuelve el tipo de figura de la figura actual
+     * @return Devuelve TipoFigura de figuraActual
+     */
+    public TipoFigura getTipoFiguraActual()
+    {
+        return figuraActiva.getTipoFigura();
+    }
+
+    /**
      * Obtiene el tablero
      * @return Devuelve el tablero
      */

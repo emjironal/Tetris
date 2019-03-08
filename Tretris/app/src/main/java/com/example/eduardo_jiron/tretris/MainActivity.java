@@ -94,7 +94,30 @@ public class MainActivity extends AppCompatActivity
                             imageView.setImageResource(R.drawable.magenta_square);
                             break;
                         case ACTUAL:
-                            imageView.setImageResource(R.drawable.gray_square);
+                            switch(tablero.getTipoFiguraActual())
+                            {
+                                case I:
+                                    imageView.setImageResource(R.drawable.cyan_square);
+                                    break;
+                                case O:
+                                    imageView.setImageResource(R.drawable.yellow_square);
+                                    break;
+                                case Z:
+                                    imageView.setImageResource(R.drawable.green_square);
+                                    break;
+                                case S:
+                                    imageView.setImageResource(R.drawable.red_square);
+                                    break;
+                                case L:
+                                    imageView.setImageResource(R.drawable.orange_square);
+                                    break;
+                                case J:
+                                    imageView.setImageResource(R.drawable.blue_square);
+                                    break;
+                                case T:
+                                    imageView.setImageResource(R.drawable.magenta_square);
+                                    break;
+                            }
                             break;
                     }
                 }
