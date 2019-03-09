@@ -53,6 +53,18 @@ public class Figura
     }
 
     /**
+     * Rota la figura
+     */
+    public void rotarFigura(int cantColumnas)
+    {
+        for(Cuadro cuadro : cuadros)
+        {
+            cuadro.trasponer();
+            cuadro.mirrorColumn(cantColumnas);
+        }
+    }
+
+    /**
      * Devuelve el tipo de figura
      * @return Devuelve tipoFigura
      */

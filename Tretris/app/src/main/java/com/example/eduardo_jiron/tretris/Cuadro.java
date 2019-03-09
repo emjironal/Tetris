@@ -24,19 +24,31 @@ public class Cuadro
     }
 
     /**
+     * Cambia la columna con la fila y la fila con la columna
+     */
+    public void trasponer()
+    {
+        int temp = column;
+        column = row;
+        row = temp;
+    }
+
+    /**
+     * Refleja la columna del cuadro
+     * @param cantColumns Cantidad de columnas de la matriz donde está el cuadro
+     */
+    public void mirrorColumn(int cantColumns)
+    {
+        column *= -1;
+        column += cantColumns - 1;
+    }
+
+    /**
      * Método que cambia la posición del cuadro hacia abajo
      */
     public void moverAbajo()
     {
         row++;
-    }
-
-    /**
-     * Método que cambia la posición del cuadro hacia arriba
-     */
-    public void moverArriba()
-    {
-        row--;
     }
 
     /**

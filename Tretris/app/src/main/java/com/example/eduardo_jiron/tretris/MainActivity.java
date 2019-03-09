@@ -9,12 +9,18 @@ import android.support.v7.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity
 {
     /**
      * Tablero virtual
      */
     private Tablero tablero;
+    /**
+     * Puntos que lleva el jugador
+     */
+    private int puntos = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -56,6 +62,39 @@ public class MainActivity extends AppCompatActivity
     }
 
     /**
+     * Pinta un cuadro en el tablero
+     * @param imageView ImageView del cuadro en el GUI
+     * @param tipoFigura TipoFigura del cuadro a pintar
+     */
+    private void pintarCuadro(ImageView imageView, TipoFigura tipoFigura)
+    {
+        switch (tipoFigura)
+        {
+            case I:
+                imageView.setImageResource(R.drawable.cyan_square);
+                break;
+            case O:
+                imageView.setImageResource(R.drawable.yellow_square);
+                break;
+            case Z:
+                imageView.setImageResource(R.drawable.green_square);
+                break;
+            case S:
+                imageView.setImageResource(R.drawable.red_square);
+                break;
+            case L:
+                imageView.setImageResource(R.drawable.orange_square);
+                break;
+            case J:
+                imageView.setImageResource(R.drawable.blue_square);
+                break;
+            case T:
+                imageView.setImageResource(R.drawable.magenta_square);
+                break;
+        }
+    }
+
+    /**
      * Refresca el tablero, recarga los colores en las posiciones correctas
      */
     private void recargarTablero()
@@ -63,63 +102,22 @@ public class MainActivity extends AppCompatActivity
         TipoFigura[][] temporalTablero = tablero.getTablero();
         GridLayout gridTablero = findViewById(R.id.gridTablero);
         ImageView imageView;
+        ArrayList<Integer> listOfFilledRows = new ArrayList<>();
         for(int row = 0; row < temporalTablero.length; row++)
         {
             boolean isRowFilled = true;
-            for(int column = 0; column < temporalTablero[0].length; column++)
+            for(int column = 0; column < temporalTablero[row].length; column++)
             {
                 imageView = (ImageView)gridTablero.getChildAt(getChildIndex(column + 1, row + 1, gridTablero.getColumnCount()));
                 if(temporalTablero[column][row] != TipoFigura.VACIO)
                 {
-                    switch (temporalTablero[column][row])
+                    if(temporalTablero[column][row] == TipoFigura.ACTUAL)
                     {
-                        case I:
-                            imageView.setImageResource(R.drawable.cyan_square);
-                            break;
-                        case O:
-                            imageView.setImageResource(R.drawable.yellow_square);
-                            break;
-                        case Z:
-                            imageView.setImageResource(R.drawable.green_square);
-                            break;
-                        case S:
-                            imageView.setImageResource(R.drawable.red_square);
-                            break;
-                        case L:
-                            imageView.setImageResource(R.drawable.orange_square);
-                            break;
-                        case J:
-                            imageView.setImageResource(R.drawable.blue_square);
-                            break;
-                        case T:
-                            imageView.setImageResource(R.drawable.magenta_square);
-                            break;
-                        case ACTUAL:
-                            switch(tablero.getTipoFiguraActual())
-                            {
-                                case I:
-                                    imageView.setImageResource(R.drawable.cyan_square);
-                                    break;
-                                case O:
-                                    imageView.setImageResource(R.drawable.yellow_square);
-                                    break;
-                                case Z:
-                                    imageView.setImageResource(R.drawable.green_square);
-                                    break;
-                                case S:
-                                    imageView.setImageResource(R.drawable.red_square);
-                                    break;
-                                case L:
-                                    imageView.setImageResource(R.drawable.orange_square);
-                                    break;
-                                case J:
-                                    imageView.setImageResource(R.drawable.blue_square);
-                                    break;
-                                case T:
-                                    imageView.setImageResource(R.drawable.magenta_square);
-                                    break;
-                            }
-                            break;
+                        pintarCuadro(imageView, tablero.getTipoFiguraActual());
+                    }
+                    else
+                    {
+                        pintarCuadro(imageView, temporalTablero[column][row]);
                     }
                 }
                 else
@@ -128,7 +126,10 @@ public class MainActivity extends AppCompatActivity
                     isRowFilled = false;
                 }
             }
-            
+            if(isRowFilled)
+            {
+                listOfFilledRows.add(row);
+            }
         }
     }
 
@@ -171,6 +172,12 @@ public class MainActivity extends AppCompatActivity
     public void btnIzquierdaClicked(View view)
     {
         tablero.moverIzquierda();
+        recargarTablero();
+    }
+
+    public void btnRotarClicked(View view)
+    {
+        tablero.rotarFiguraActual();
         recargarTablero();
     }
 }

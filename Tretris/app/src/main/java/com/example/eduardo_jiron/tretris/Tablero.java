@@ -22,6 +22,19 @@ public class Tablero
         vaciarTablero();
     }
 
+    public void rotarFiguraActual()
+    {
+        for(Cuadro cuadro : figuraActiva.getCuadros())
+        {
+            tablero[cuadro.getColumn()][cuadro.getRow()] = TipoFigura.VACIO;
+        }
+        figuraActiva.rotarFigura(tablero[0].length);
+        for(Cuadro cuadro : figuraActiva.getCuadros())
+        {
+            tablero[cuadro.getColumn()][cuadro.getRow()] = TipoFigura.ACTUAL;
+        }
+    }
+
     /**
      * Devuelve el tipo de figura de la figura actual
      * @return Devuelve TipoFigura de figuraActual
