@@ -116,18 +116,18 @@ public class Figura
         else if(orientacion.equals("alreves"))
         {
             orientacion = "derecha";
-            cuadros.get(0).row += 0; cuadros.get(0).column += ;
-            cuadros.get(1).row += 0; cuadros.get(1).column += 0;
-            cuadros.get(2).row += 1; cuadros.get(2).column -= 1;
-            cuadros.get(3).row += 2; cuadros.get(3).column += 0;
+            cuadros.get(0).row += 0; cuadros.get(0).column += 2;
+            cuadros.get(1).row += 1; cuadros.get(1).column += 1;
+            cuadros.get(2).row += 2; cuadros.get(2).column += 0;
+            cuadros.get(3).row += 1; cuadros.get(3).column -= 1;
         }
         else
         {
             orientacion = "normal";
-            cuadros.get(0).row -= 1; cuadros.get(0).column -= 2;
-            cuadros.get(1).row += 0; cuadros.get(1).column -= 1;
-            cuadros.get(2).row += 1; cuadros.get(2).column += 0;
-            cuadros.get(3).row += 0; cuadros.get(3).column += 1;
+            cuadros.get(0).row -= 2; cuadros.get(0).column -= 1;
+            cuadros.get(1).row -= 1; cuadros.get(1).column += 0;
+            cuadros.get(2).row += 0; cuadros.get(2).column += 1;
+            cuadros.get(3).row += 1; cuadros.get(3).column += 0;
         }
     }
 
@@ -140,6 +140,9 @@ public class Figura
         {
             case L:
                 rotarFiguraL();
+                break;
+            case J:
+                rotarFiguraJ();
                 break;
         }
     }
