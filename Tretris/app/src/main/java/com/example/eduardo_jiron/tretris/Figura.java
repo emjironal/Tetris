@@ -9,6 +9,7 @@ public class Figura
      */
     private ArrayList<Cuadro> cuadros;
     private TipoFigura tipoFigura;
+    private String orientacion = "normal";
 
     /**
      * Constructor de la clase Figura
@@ -53,14 +54,93 @@ public class Figura
     }
 
     /**
+     * Rota la figura L
+     */
+    private void rotarFiguraL()
+    {
+        if(orientacion.equals("normal"))
+        {
+            orientacion = "izquierda";
+            cuadros.get(0).row += 2; cuadros.get(0).column += 0;
+            cuadros.get(1).row += 1; cuadros.get(1).column += 1;
+            cuadros.get(2).row += 0; cuadros.get(2).column += 2;
+            cuadros.get(3).row -= 1; cuadros.get(3).column += 1;
+        }
+        else if(orientacion.equals("izquierda"))
+        {
+            orientacion = "alreves";
+            cuadros.get(0).row += 0; cuadros.get(0).column += 1;
+            cuadros.get(1).row -= 1; cuadros.get(1).column += 0;
+            cuadros.get(2).row -= 2; cuadros.get(2).column -= 1;
+            cuadros.get(3).row -= 1; cuadros.get(3).column -= 2;
+        }
+        else if(orientacion.equals("alreves"))
+        {
+            orientacion = "derecha";
+            cuadros.get(0).row -= 1; cuadros.get(0).column += 1;
+            cuadros.get(1).row += 0; cuadros.get(1).column += 0;
+            cuadros.get(2).row += 1; cuadros.get(2).column -= 1;
+            cuadros.get(3).row += 2; cuadros.get(3).column += 0;
+        }
+        else
+        {
+            orientacion = "normal";
+            cuadros.get(0).row -= 1; cuadros.get(0).column -= 2;
+            cuadros.get(1).row += 0; cuadros.get(1).column -= 1;
+            cuadros.get(2).row += 1; cuadros.get(2).column += 0;
+            cuadros.get(3).row += 0; cuadros.get(3).column += 1;
+        }
+    }
+
+    /**
+     * Rota la figura J
+     */
+    private void rotarFiguraJ()
+    {
+        if(orientacion.equals("normal"))
+        {
+            orientacion = "izquierda";
+            cuadros.get(0).row += 1; cuadros.get(0).column -= 1;
+            cuadros.get(1).row += 0; cuadros.get(1).column += 0;
+            cuadros.get(2).row -= 1; cuadros.get(2).column += 1;
+            cuadros.get(3).row += 0; cuadros.get(3).column += 2;
+        }
+        else if(orientacion.equals("izquierda"))
+        {
+            orientacion = "alreves";
+            cuadros.get(0).row += 1; cuadros.get(0).column += 0;
+            cuadros.get(1).row += 0; cuadros.get(1).column -= 1;
+            cuadros.get(2).row -= 1; cuadros.get(2).column -= 2;
+            cuadros.get(3).row -= 2; cuadros.get(3).column -= 1;
+        }
+        else if(orientacion.equals("alreves"))
+        {
+            orientacion = "derecha";
+            cuadros.get(0).row += 0; cuadros.get(0).column += ;
+            cuadros.get(1).row += 0; cuadros.get(1).column += 0;
+            cuadros.get(2).row += 1; cuadros.get(2).column -= 1;
+            cuadros.get(3).row += 2; cuadros.get(3).column += 0;
+        }
+        else
+        {
+            orientacion = "normal";
+            cuadros.get(0).row -= 1; cuadros.get(0).column -= 2;
+            cuadros.get(1).row += 0; cuadros.get(1).column -= 1;
+            cuadros.get(2).row += 1; cuadros.get(2).column += 0;
+            cuadros.get(3).row += 0; cuadros.get(3).column += 1;
+        }
+    }
+
+    /**
      * Rota la figura
      */
-    public void rotarFigura(int cantColumnas)
+    public void rotarFigura()
     {
-        for(Cuadro cuadro : cuadros)
+        switch (tipoFigura)
         {
-            cuadro.trasponer();
-            cuadro.mirrorColumn(cantColumnas);
+            case L:
+                rotarFiguraL();
+                break;
         }
     }
 

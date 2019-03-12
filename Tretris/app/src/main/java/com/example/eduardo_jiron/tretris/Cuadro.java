@@ -5,12 +5,12 @@ public class Cuadro
     /**
      * Posición en column del cuadro
      */
-    private int column;
+    public int column;
 
     /**
      * Posición en row del cuadro
      */
-    private int row;
+    public int row;
 
     /**
      * Constructor de la clase Cuadro

@@ -28,7 +28,7 @@ public class Tablero
         {
             tablero[cuadro.getColumn()][cuadro.getRow()] = TipoFigura.VACIO;
         }
-        figuraActiva.rotarFigura(tablero[0].length);
+        figuraActiva.rotarFigura();
         for(Cuadro cuadro : figuraActiva.getCuadros())
         {
             tablero[cuadro.getColumn()][cuadro.getRow()] = TipoFigura.ACTUAL;
