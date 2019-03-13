@@ -132,18 +132,141 @@ public class Figura
     }
 
     /**
+     * Rota la figura T
+     */
+    private void rotarFiguraT()
+    {
+        if(orientacion.equals("normal"))
+        {
+            orientacion = "izquierda";
+            cuadros.get(0).row += 1; cuadros.get(0).column += 1;
+            cuadros.get(1).row += 0; cuadros.get(1).column += 0;
+            cuadros.get(2).row -= 1; cuadros.get(2).column -= 1;
+            cuadros.get(3).row -= 1; cuadros.get(3).column += 1;
+        }
+        else if(orientacion.equals("izquierda"))
+        {
+            orientacion = "alreves";
+            cuadros.get(0).row += 0; cuadros.get(0).column += 1;
+            cuadros.get(1).row += 1; cuadros.get(1).column += 0;
+            cuadros.get(2).row += 2; cuadros.get(2).column -= 1;
+            cuadros.get(3).row += 0; cuadros.get(3).column -= 1;
+        }
+        else if(orientacion.equals("alreves"))
+        {
+            orientacion = "derecha";
+            cuadros.get(0).row -= 2; cuadros.get(0).column += 0;
+            cuadros.get(1).row -= 1; cuadros.get(1).column += 1;
+            cuadros.get(2).row += 0; cuadros.get(2).column += 2;
+            cuadros.get(3).row += 0; cuadros.get(3).column += 0;
+        }
+        else
+        {
+            orientacion = "normal";
+            cuadros.get(0).row += 1; cuadros.get(0).column -= 2;
+            cuadros.get(1).row += 0; cuadros.get(1).column -= 1;
+            cuadros.get(2).row -= 1; cuadros.get(2).column += 0;
+            cuadros.get(3).row += 1; cuadros.get(3).column += 0;
+        }
+    }
+
+    /**
+     * Rotar figura Z
+     */
+    private void rotarFiguraZ()
+    {
+        if(orientacion.equals("normal"))
+        {
+            orientacion = "vertical";
+            cuadros.get(0).row += 1; cuadros.get(0).column += 0;
+            cuadros.get(1).row += 0; cuadros.get(1).column -= 1;
+            cuadros.get(2).row -= 1; cuadros.get(2).column += 0;
+            cuadros.get(3).row -= 2; cuadros.get(3).column -= 1;
+        }
+        else if(orientacion.equals("vertical"))
+        {
+            orientacion = "normal";
+            cuadros.get(0).row -= 1; cuadros.get(0).column += 0;
+            cuadros.get(1).row += 0; cuadros.get(1).column += 1;
+            cuadros.get(2).row += 1; cuadros.get(2).column += 0;
+            cuadros.get(3).row += 2; cuadros.get(3).column += 1;
+        }
+    }
+
+    /**
+     * Rotar figura S
+     */
+    private void rotarFiguraS()
+    {
+        if(orientacion.equals("normal"))
+        {
+            orientacion = "vertical";
+            cuadros.get(0).row += 0; cuadros.get(0).column += 2;
+            cuadros.get(1).row -= 1; cuadros.get(1).column += 1;
+            cuadros.get(2).row += 0; cuadros.get(2).column += 0;
+            cuadros.get(3).row -= 1; cuadros.get(3).column -= 1;
+        }
+        else if(orientacion.equals("vertical"))
+        {
+            orientacion = "normal";
+            cuadros.get(0).row += 0; cuadros.get(0).column -= 2;
+            cuadros.get(1).row += 1; cuadros.get(1).column -= 1;
+            cuadros.get(2).row += 0; cuadros.get(2).column += 0;
+            cuadros.get(3).row += 1; cuadros.get(3).column += 1;
+        }
+    }
+
+    /**
+     * Rotar figura I
+     */
+    private void rotarFiguraI()
+    {
+        if(orientacion.equals("normal"))
+        {
+            orientacion = "vertical";
+            cuadros.get(0).row += 0; cuadros.get(0).column += 1;
+            cuadros.get(1).row -= 1; cuadros.get(1).column += 0;
+            cuadros.get(2).row -= 2; cuadros.get(2).column -= 1;
+            cuadros.get(3).row -= 3; cuadros.get(3).column -= 2;
+        }
+        else if(orientacion.equals("vertical"))
+        {
+            orientacion = "normal";
+            cuadros.get(0).row += 0; cuadros.get(0).column -= 1;
+            cuadros.get(1).row += 1; cuadros.get(1).column += 0;
+            cuadros.get(2).row += 2; cuadros.get(2).column += 1;
+            cuadros.get(3).row += 3; cuadros.get(3).column += 2;
+        }
+    }
+
+    /**
      * Rota la figura
      */
     public void rotarFigura()
     {
-        switch (tipoFigura)
+        if(tipoFigura != TipoFigura.O)
         {
-            case L:
-                rotarFiguraL();
-                break;
-            case J:
-                rotarFiguraJ();
-                break;
+            switch (tipoFigura)
+            {
+                case L:
+                    rotarFiguraL();
+                    break;
+                case J:
+                    rotarFiguraJ();
+                    break;
+                case T:
+                    rotarFiguraT();
+                    break;
+                case Z:
+                    rotarFiguraZ();
+                    break;
+                case S:
+                    rotarFiguraS();
+                    break;
+                case I:
+                    rotarFiguraI();
+                    break;
+            }
         }
     }
 
