@@ -47,7 +47,9 @@ public class MainActivity extends AppCompatActivity
                 for(int column = 0; column < gridTablero.getColumnCount(); column++)
                 {
                     ImageView imageView = new ImageView(this);
-                    imageView.setLayoutParams(new ViewGroup.LayoutParams(45, 45)); //Tamaño de la imagen
+                    int width = gridTablero.getLayoutParams().width / gridTablero.getColumnCount();
+                    int height = gridTablero.getLayoutParams().height / gridTablero.getRowCount();
+                    imageView.setLayoutParams(new ViewGroup.LayoutParams(width, height)); //Tamaño de la imagen
                     if(row == (gridTablero.getRowCount() - 1) || row == 0 || column == (gridTablero.getColumnCount() - 1) || column == 0)
                     {
                         imageView.setImageResource(R.drawable.gray_square);
