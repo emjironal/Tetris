@@ -28,7 +28,7 @@ public class Tablero
      */
     public void deleteRow(int row)
     {
-        for(int i = row - 1; 0 < i; i--)
+        for(int i = row - 1; 0 <= i; i--)
         {
              tablero[i + 1] = tablero[i];
         }
@@ -126,7 +126,7 @@ public class Tablero
     /**
      * Mueve la figura activa hacia abajo en el tablero si no se puede la fija en el tablero y crea una nueva
      */
-    public void moverAbajo()
+    public boolean moverAbajo()
     {
         if(validarMoverAbajo())
         {
@@ -139,15 +139,13 @@ public class Tablero
             {
                 tablero[cuadro.getRow()][cuadro.getColumn()] = TipoFigura.ACTUAL;
             }
+            return true;
         }
-        else
+        for(Cuadro cuadro : figuraActiva.getCuadros())
         {
-            for(Cuadro cuadro : figuraActiva.getCuadros())
-            {
-                tablero[cuadro.getRow()][cuadro.getColumn()] = figuraActiva.getTipoFigura();
-            }
-            crearFigura();
+            tablero[cuadro.getRow()][cuadro.getColumn()] = figuraActiva.getTipoFigura();
         }
+        return false;
     }
 
     /**

@@ -67,8 +67,7 @@ public class MainActivity extends AppCompatActivity
                 @Override
                 public void run()
                 {
-                    tablero.moverAbajo();
-                    recargarTablero();
+                    btnAbajoClicked(null);
                     handler.postDelayed(this, 1000);
                 }
             };
@@ -119,39 +118,41 @@ public class MainActivity extends AppCompatActivity
      */
     private void recargarTablero()
     {
-        TipoFigura[][] temporalTablero = tablero.getTablero();
-        GridLayout gridTablero = findViewById(R.id.gridTablero);
-        ImageView imageView;
-        ArrayList<Integer> listOfFilledRows = new ArrayList<>();
-        for(int row = 0; row < temporalTablero.length; row++)
+        TipoFigura[][] temporalTablero = tablero.getTablero(); //tablero virtual
+        GridLayout gridTablero = findViewById(R.id.gridTablero); //tablero grafico
+        ImageView imageView; //imagen del tablero grafico
+        ArrayList<Integer> listOfFilledRows = new ArrayList<>(); //filas llenas
+        boolean isRowFilled; //si la fila está llena
+        for(int row = 0; row < temporalTablero.length; row++) //recorre las filas del tablero virtual
         {
-            boolean isRowFilled = true;
-            for(int column = 0; column < temporalTablero[row].length; column++)
+            isRowFilled = true; //pone que la fila está llena
+            for(int column = 0; column < temporalTablero[row].length; column++) //recorre las columnas de la fila del tablero virtual
             {
-                imageView = (ImageView)gridTablero.getChildAt(getChildIndex(column + 1, row + 1, gridTablero.getColumnCount()));
-                if(temporalTablero[row][column] != TipoFigura.VACIO)
+                imageView = (ImageView)gridTablero.getChildAt(getChildIndex(column + 1, row + 1, gridTablero.getColumnCount())); //Obtiene la posicion del tablero virtual en el grafico
+                if(temporalTablero[row][column] != TipoFigura.VACIO) //si esa posicion diferente de vacía
                 {
-                    if(temporalTablero[row][column] == TipoFigura.ACTUAL)
+                    if(temporalTablero[row][column] == TipoFigura.ACTUAL) //si la posicion del tablero pertenece a la figura cayendo
                     {
-                        pintarCuadro(imageView, tablero.getTipoFiguraActual());
+                        pintarCuadro(imageView, tablero.getTipoFiguraActual()); //pinta el cuadro del tablero grafico
+                        isRowFilled = false; //pone que la fila no está llena
                     }
                     else
                     {
-                        pintarCuadro(imageView, temporalTablero[row][column]);
+                        pintarCuadro(imageView, temporalTablero[row][column]); //pinta el tablero grafico del color de la figura del tablero virtual
                     }
                 }
                 else
                 {
-                    imageView.setImageResource(R.drawable.black_square);
-                    isRowFilled = false;
+                    imageView.setImageResource(R.drawable.black_square); //pinta el tablero grafico como vacio
+                    isRowFilled = false; //pone que la fila no está llena
                 }
             }
-            if(isRowFilled)
+            if(isRowFilled) //si la fila está llena
             {
-                listOfFilledRows.add(row);
+                listOfFilledRows.add(row); //agrega el número de fila a la lista de filas llenas
             }
         }
-        if(!listOfFilledRows.isEmpty())
+        if(!listOfFilledRows.isEmpty()) //si la lista de filas vacías no está vacía
         {
             try
             {
@@ -168,7 +169,6 @@ public class MainActivity extends AppCompatActivity
     {
         for(int row : listOfFilledRows)
         {
-            Log.e("error", "row: " + row);
             tablero.deleteRow(row);
         }
         recargarTablero();
@@ -192,8 +192,13 @@ public class MainActivity extends AppCompatActivity
      */
     public void btnAbajoClicked(View view)
     {
-        tablero.moverAbajo();
+        boolean isValid = tablero.moverAbajo();
         recargarTablero();
+        if(!isValid)
+        {
+            tablero.crearFigura();
+            recargarTablero();
+        }
     }
 
     /**
