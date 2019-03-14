@@ -22,6 +22,38 @@ public class Tablero
         vaciarTablero();
     }
 
+    /**
+     * Elimina una fila del tablero
+     * @param row Fila a eliminar
+     */
+    public void deleteRow(int row)
+    {
+        for(int i = row - 1; 0 < i; i--)
+        {
+             tablero[i + 1] = tablero[i];
+        }
+        tablero[0] = getEmptyRow(tablero[0].length);
+    }
+
+    /**
+     * Crea una fila vacía
+     * @param size tamaño de la fila a crear
+     * @return Fila llena de TipoFigura.VACIO
+     */
+    private TipoFigura[] getEmptyRow(int size)
+    {
+        TipoFigura[] newRow = new TipoFigura[size];
+        for(int i = 0; i < size; i++)
+        {
+            newRow[i] = TipoFigura.VACIO;
+
+        }
+        return newRow;
+    }
+
+    /**
+     * Rota la figura en movimiento del tablero
+     */
     public void rotarFiguraActual()
     {
         for(Cuadro cuadro : figuraActiva.getCuadros())

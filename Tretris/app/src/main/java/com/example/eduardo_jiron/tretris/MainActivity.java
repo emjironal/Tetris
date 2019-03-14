@@ -1,5 +1,6 @@
 package com.example.eduardo_jiron.tretris;
 
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,14 @@ public class MainActivity extends AppCompatActivity
      * Puntos que lleva el jugador
      */
     private int puntos = 0;
+    /**
+     * Hace que las fichas se muevan solas
+     */
+    private Runnable runnable;
+    /**
+     * Controla el runnable
+     */
+    private Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -53,6 +62,17 @@ public class MainActivity extends AppCompatActivity
             }
             tablero.crearFigura();
             recargarTablero();
+            handler = new Handler();
+            runnable = new Runnable() {
+                @Override
+                public void run()
+                {
+                    tablero.moverAbajo();
+                    recargarTablero();
+                    handler.postDelayed(this, 1000);
+                }
+            };
+            runnable.run();
         }
         catch(Exception e)
         {
@@ -131,6 +151,27 @@ public class MainActivity extends AppCompatActivity
                 listOfFilledRows.add(row);
             }
         }
+        if(!listOfFilledRows.isEmpty())
+        {
+            try
+            {
+                destruirFilas(listOfFilledRows);
+            }
+            catch (Exception e)
+            {
+                Log.e("error", e.getMessage());
+            }
+        }
+    }
+
+    private void destruirFilas(ArrayList<Integer> listOfFilledRows)
+    {
+        for(int row : listOfFilledRows)
+        {
+            Log.e("error", "row: " + row);
+            tablero.deleteRow(row);
+        }
+        recargarTablero();
     }
 
     /**
