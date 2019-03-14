@@ -63,6 +63,14 @@ public class Tablero
         figuraActiva.rotarFigura();
         for(Cuadro cuadro : figuraActiva.getCuadros())
         {
+            if(cuadro.row >= tablero.length || cuadro.row < 0 || cuadro.column < 0 || cuadro.column >= tablero[cuadro.row].length || tablero[cuadro.row][cuadro.column] != TipoFigura.VACIO)
+            {
+                figuraActiva.desrotarFigura();
+                break;
+            }
+        }
+        for(Cuadro cuadro : figuraActiva.getCuadros())
+        {
             tablero[cuadro.getRow()][cuadro.getColumn()] = TipoFigura.ACTUAL;
         }
     }

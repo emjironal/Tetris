@@ -10,6 +10,7 @@ public class Figura
     private ArrayList<Cuadro> cuadros;
     private TipoFigura tipoFigura;
     private String orientacion = "normal";
+    private String previa;
 
     /**
      * Constructor de la clase Figura
@@ -60,6 +61,7 @@ public class Figura
     {
         if(orientacion.equals("normal"))
         {
+            previa = "normal";
             orientacion = "izquierda";
             cuadros.get(0).row += 2; cuadros.get(0).column += 0;
             cuadros.get(1).row += 1; cuadros.get(1).column += 1;
@@ -68,6 +70,7 @@ public class Figura
         }
         else if(orientacion.equals("izquierda"))
         {
+            previa = "izquierda";
             orientacion = "alreves";
             cuadros.get(0).row += 0; cuadros.get(0).column += 1;
             cuadros.get(1).row -= 1; cuadros.get(1).column += 0;
@@ -76,6 +79,7 @@ public class Figura
         }
         else if(orientacion.equals("alreves"))
         {
+            previa = "alreves";
             orientacion = "derecha";
             cuadros.get(0).row -= 1; cuadros.get(0).column += 1;
             cuadros.get(1).row += 0; cuadros.get(1).column += 0;
@@ -84,6 +88,7 @@ public class Figura
         }
         else
         {
+            previa = "derecha";
             orientacion = "normal";
             cuadros.get(0).row -= 1; cuadros.get(0).column -= 2;
             cuadros.get(1).row += 0; cuadros.get(1).column -= 1;
@@ -99,6 +104,7 @@ public class Figura
     {
         if(orientacion.equals("normal"))
         {
+            previa = "normal";
             orientacion = "izquierda";
             cuadros.get(0).row += 1; cuadros.get(0).column -= 1;
             cuadros.get(1).row += 0; cuadros.get(1).column += 0;
@@ -107,6 +113,7 @@ public class Figura
         }
         else if(orientacion.equals("izquierda"))
         {
+            previa = "izquierda";
             orientacion = "alreves";
             cuadros.get(0).row += 1; cuadros.get(0).column += 0;
             cuadros.get(1).row += 0; cuadros.get(1).column -= 1;
@@ -115,6 +122,7 @@ public class Figura
         }
         else if(orientacion.equals("alreves"))
         {
+            previa = "alreves";
             orientacion = "derecha";
             cuadros.get(0).row += 0; cuadros.get(0).column += 2;
             cuadros.get(1).row += 1; cuadros.get(1).column += 1;
@@ -123,6 +131,7 @@ public class Figura
         }
         else
         {
+            previa = "derecha";
             orientacion = "normal";
             cuadros.get(0).row -= 2; cuadros.get(0).column -= 1;
             cuadros.get(1).row -= 1; cuadros.get(1).column += 0;
@@ -138,6 +147,7 @@ public class Figura
     {
         if(orientacion.equals("normal"))
         {
+            previa = "normal";
             orientacion = "izquierda";
             cuadros.get(0).row += 1; cuadros.get(0).column += 1;
             cuadros.get(1).row += 0; cuadros.get(1).column += 0;
@@ -146,6 +156,7 @@ public class Figura
         }
         else if(orientacion.equals("izquierda"))
         {
+            previa = "izquierda";
             orientacion = "alreves";
             cuadros.get(0).row += 0; cuadros.get(0).column += 1;
             cuadros.get(1).row += 1; cuadros.get(1).column += 0;
@@ -154,6 +165,7 @@ public class Figura
         }
         else if(orientacion.equals("alreves"))
         {
+            previa = "alreves";
             orientacion = "derecha";
             cuadros.get(0).row -= 2; cuadros.get(0).column += 0;
             cuadros.get(1).row -= 1; cuadros.get(1).column += 1;
@@ -162,6 +174,7 @@ public class Figura
         }
         else
         {
+            previa = "derecha";
             orientacion = "normal";
             cuadros.get(0).row += 1; cuadros.get(0).column -= 2;
             cuadros.get(1).row += 0; cuadros.get(1).column -= 1;
@@ -177,6 +190,7 @@ public class Figura
     {
         if(orientacion.equals("normal"))
         {
+            previa = "normal";
             orientacion = "vertical";
             cuadros.get(0).row += 1; cuadros.get(0).column += 0;
             cuadros.get(1).row += 0; cuadros.get(1).column -= 1;
@@ -185,6 +199,7 @@ public class Figura
         }
         else if(orientacion.equals("vertical"))
         {
+            previa = "vertical";
             orientacion = "normal";
             cuadros.get(0).row -= 1; cuadros.get(0).column += 0;
             cuadros.get(1).row += 0; cuadros.get(1).column += 1;
@@ -200,6 +215,7 @@ public class Figura
     {
         if(orientacion.equals("normal"))
         {
+            previa = "normal";
             orientacion = "vertical";
             cuadros.get(0).row += 0; cuadros.get(0).column += 2;
             cuadros.get(1).row -= 1; cuadros.get(1).column += 1;
@@ -208,6 +224,7 @@ public class Figura
         }
         else if(orientacion.equals("vertical"))
         {
+            previa = "vertical";
             orientacion = "normal";
             cuadros.get(0).row += 0; cuadros.get(0).column -= 2;
             cuadros.get(1).row += 1; cuadros.get(1).column -= 1;
@@ -223,6 +240,7 @@ public class Figura
     {
         if(orientacion.equals("normal"))
         {
+            previa = "normal";
             orientacion = "vertical";
             cuadros.get(0).row += 0; cuadros.get(0).column += 1;
             cuadros.get(1).row -= 1; cuadros.get(1).column += 0;
@@ -231,6 +249,7 @@ public class Figura
         }
         else if(orientacion.equals("vertical"))
         {
+            previa = "vertical";
             orientacion = "normal";
             cuadros.get(0).row += 0; cuadros.get(0).column -= 1;
             cuadros.get(1).row += 1; cuadros.get(1).column += 0;
@@ -267,6 +286,15 @@ public class Figura
                     rotarFiguraI();
                     break;
             }
+        }
+    }
+
+    public void desrotarFigura()
+    {
+        String temp = previa;
+        while(!orientacion.equals(temp))
+        {
+            rotarFigura();
         }
     }
 
