@@ -129,15 +129,15 @@ public class MainActivity extends AppCompatActivity
             for(int column = 0; column < temporalTablero[row].length; column++)
             {
                 imageView = (ImageView)gridTablero.getChildAt(getChildIndex(column + 1, row + 1, gridTablero.getColumnCount()));
-                if(temporalTablero[column][row] != TipoFigura.VACIO)
+                if(temporalTablero[row][column] != TipoFigura.VACIO)
                 {
-                    if(temporalTablero[column][row] == TipoFigura.ACTUAL)
+                    if(temporalTablero[row][column] == TipoFigura.ACTUAL)
                     {
                         pintarCuadro(imageView, tablero.getTipoFiguraActual());
                     }
                     else
                     {
-                        pintarCuadro(imageView, temporalTablero[column][row]);
+                        pintarCuadro(imageView, temporalTablero[row][column]);
                     }
                 }
                 else

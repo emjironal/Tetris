@@ -58,12 +58,12 @@ public class Tablero
     {
         for(Cuadro cuadro : figuraActiva.getCuadros())
         {
-            tablero[cuadro.getColumn()][cuadro.getRow()] = TipoFigura.VACIO;
+            tablero[cuadro.getRow()][cuadro.getColumn()] = TipoFigura.VACIO;
         }
         figuraActiva.rotarFigura();
         for(Cuadro cuadro : figuraActiva.getCuadros())
         {
-            tablero[cuadro.getColumn()][cuadro.getRow()] = TipoFigura.ACTUAL;
+            tablero[cuadro.getRow()][cuadro.getColumn()] = TipoFigura.ACTUAL;
         }
     }
 
@@ -94,12 +94,12 @@ public class Tablero
         {
             for(Cuadro cuadro : figuraActiva.getCuadros())
             {
-                tablero[cuadro.getColumn()][cuadro.getRow()] = TipoFigura.VACIO;
+                tablero[cuadro.getRow()][cuadro.getColumn()] = TipoFigura.VACIO;
             }
             figuraActiva.moverFiguraIzquierda();
             for(Cuadro cuadro : figuraActiva.getCuadros())
             {
-                tablero[cuadro.getColumn()][cuadro.getRow()] = TipoFigura.ACTUAL;
+                tablero[cuadro.getRow()][cuadro.getColumn()] = TipoFigura.ACTUAL;
             }
         }
     }
@@ -113,12 +113,12 @@ public class Tablero
         {
             for(Cuadro cuadro : figuraActiva.getCuadros())
             {
-                tablero[cuadro.getColumn()][cuadro.getRow()] = TipoFigura.VACIO;
+                tablero[cuadro.getRow()][cuadro.getColumn()] = TipoFigura.VACIO;
             }
             figuraActiva.moverFiguraDerecha();
             for(Cuadro cuadro : figuraActiva.getCuadros())
             {
-                tablero[cuadro.getColumn()][cuadro.getRow()] = TipoFigura.ACTUAL;
+                tablero[cuadro.getRow()][cuadro.getColumn()] = TipoFigura.ACTUAL;
             }
         }
     }
@@ -132,19 +132,19 @@ public class Tablero
         {
             for(Cuadro cuadro : figuraActiva.getCuadros())
             {
-                tablero[cuadro.getColumn()][cuadro.getRow()] = TipoFigura.VACIO;
+                tablero[cuadro.getRow()][cuadro.getColumn()] = TipoFigura.VACIO;
             }
             figuraActiva.moverFiguraAbajo();
             for(Cuadro cuadro : figuraActiva.getCuadros())
             {
-                tablero[cuadro.getColumn()][cuadro.getRow()] = TipoFigura.ACTUAL;
+                tablero[cuadro.getRow()][cuadro.getColumn()] = TipoFigura.ACTUAL;
             }
         }
         else
         {
             for(Cuadro cuadro : figuraActiva.getCuadros())
             {
-                tablero[cuadro.getColumn()][cuadro.getRow()] = figuraActiva.getTipoFigura();
+                tablero[cuadro.getRow()][cuadro.getColumn()] = figuraActiva.getTipoFigura();
             }
             crearFigura();
         }
@@ -195,7 +195,7 @@ public class Tablero
         figuraActiva = new Figura(tipoFigura, column, 0);
         for(Cuadro cuadro : figuraActiva.getCuadros())
         {
-            tablero[cuadro.getColumn()][cuadro.getRow()] = TipoFigura.ACTUAL;
+            tablero[cuadro.getRow()][cuadro.getColumn()] = TipoFigura.ACTUAL;
         }
     }
 
@@ -209,7 +209,7 @@ public class Tablero
         {
             int column = cuadro.getColumn() - 1;
             int row = cuadro.getRow();
-            if(column < 0 || (tablero[column][row] != TipoFigura.ACTUAL && tablero[column][row] != TipoFigura.VACIO))
+            if(column < 0 || (tablero[row][column] != TipoFigura.ACTUAL && tablero[row][column] != TipoFigura.VACIO))
             {
                 return false;
             }
@@ -227,7 +227,7 @@ public class Tablero
         {
             int column = cuadro.getColumn() + 1;
             int row = cuadro.getRow();
-            if(column >= tablero[0].length || (tablero[column][row] != TipoFigura.ACTUAL && tablero[column][row] != TipoFigura.VACIO))
+            if(column >= tablero[0].length || (tablero[row][column] != TipoFigura.ACTUAL && tablero[row][column] != TipoFigura.VACIO))
             {
                 return false;
             }
@@ -245,7 +245,7 @@ public class Tablero
         {
             int column = cuadro.getColumn();
             int row = cuadro.getRow() + 1;
-            if(row >= tablero.length || (tablero[column][row] != TipoFigura.ACTUAL && tablero[column][row] != TipoFigura.VACIO))
+            if(row >= tablero.length || (tablero[row][column] != TipoFigura.ACTUAL && tablero[row][column] != TipoFigura.VACIO))
             {
                 return false;
             }
