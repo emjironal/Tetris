@@ -33,7 +33,13 @@ public class MainActivity extends AppCompatActivity
      * Controla el runnable
      */
     private Handler handler;
+    /**
+     * Velocidad de caida automática
+     */
     private Integer speed = 1000;
+    /**
+     * Si el runnable está en pausa
+     */
     private boolean isPaused = false;
 
     @Override
@@ -182,6 +188,9 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Método que se ejecuta cuando pierde
+     */
     public void perder()
     {
         isPaused = true;
@@ -201,6 +210,10 @@ public class MainActivity extends AppCompatActivity
         alertDialogBuilder.show();
     }
 
+    /**
+     * Método que destruye las filas completas
+     * @param listOfFilledRows Lista de las filas completas
+     */
     private void destruirFilas(ArrayList<Integer> listOfFilledRows)
     {
         Double newSpeed = speed.doubleValue();
@@ -261,6 +274,10 @@ public class MainActivity extends AppCompatActivity
         recargarTablero();
     }
 
+    /**
+     * ActionPerformance del botón rotar
+     * @param view
+     */
     public void btnRotarClicked(View view)
     {
         tablero.rotarFiguraActual();

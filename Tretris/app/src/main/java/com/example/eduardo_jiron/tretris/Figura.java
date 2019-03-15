@@ -289,6 +289,9 @@ public class Figura
         }
     }
 
+    /**
+     * Vuelve a la retoación anterior
+     */
     public void desrotarFigura()
     {
         String temp = previa;
