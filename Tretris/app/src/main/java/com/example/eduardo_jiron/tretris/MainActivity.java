@@ -184,6 +184,8 @@ public class MainActivity extends AppCompatActivity
 
     public void perder()
     {
+        isPaused = true;
+        handler.removeCallbacks(runnable);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
