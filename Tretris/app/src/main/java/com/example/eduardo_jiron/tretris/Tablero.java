@@ -262,7 +262,7 @@ public class Tablero
     /**
      * Limpia el tablero, pone la matriz virtual en TipoFigura.VACIO
      */
-    private void vaciarTablero()
+    public void vaciarTablero()
     {
         for(int row = 0; row < tablero.length; row++)
         {

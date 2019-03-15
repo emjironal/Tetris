@@ -1,6 +1,8 @@
 package com.example.eduardo_jiron.tretris;
 
+import android.content.DialogInterface;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v7.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -30,6 +33,8 @@ public class MainActivity extends AppCompatActivity
      * Controla el runnable
      */
     private Handler handler;
+    private Integer speed = 1000;
+    private boolean isPaused = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -69,8 +74,11 @@ public class MainActivity extends AppCompatActivity
                 @Override
                 public void run()
                 {
-                    btnAbajoClicked(null);
-                    handler.postDelayed(this, 1000);
+                    if(!isPaused)
+                    {
+                        btnAbajoClicked(null);
+                        handler.postDelayed(this, speed);
+                    }
                 }
             };
             runnable.run();
@@ -123,6 +131,8 @@ public class MainActivity extends AppCompatActivity
         TipoFigura[][] temporalTablero = tablero.getTablero(); //tablero virtual
         GridLayout gridTablero = findViewById(R.id.gridTablero); //tablero grafico
         ImageView imageView; //imagen del tablero grafico
+        TextView lbPpuntos = findViewById(R.id.lbCurrentPoints);
+        lbPpuntos.setText("" + puntos);
         ArrayList<Integer> listOfFilledRows = new ArrayList<>(); //filas llenas
         boolean isRowFilled; //si la fila está llena
         for(int row = 0; row < temporalTablero.length; row++) //recorre las filas del tablero virtual
@@ -141,6 +151,11 @@ public class MainActivity extends AppCompatActivity
                     else
                     {
                         pintarCuadro(imageView, temporalTablero[row][column]); //pinta el tablero grafico del color de la figura del tablero virtual
+                        if(row < 2)
+                        {
+                            perder();
+                            return;
+                        }
                     }
                 }
                 else
@@ -167,11 +182,32 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    public void perder()
+    {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                recreate();
+            }
+        });
+        alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                finish();
+            }
+        });
+        alertDialogBuilder.setMessage("¿Jugar de nuevo?");
+        alertDialogBuilder.show();
+    }
+
     private void destruirFilas(ArrayList<Integer> listOfFilledRows)
     {
+        Double newSpeed = speed.doubleValue();
         for(int row : listOfFilledRows)
         {
             tablero.deleteRow(row);
+            puntos += 10;
+            newSpeed /= 1.1;
+            speed = newSpeed.intValue();
         }
         recargarTablero();
     }
